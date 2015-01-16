@@ -1,17 +1,11 @@
-/**
-* Converts a day number to a string.
-*
-* @method dayOfWeekAsString
-* @param {number} dayIndex
-* @return {Number} Returns day as number
-*/
-
-
+// Globally head date object for the month shown
 var date = new Date();
 date.setDate(1);
 date.setMonth(0);
 
+
 window.onload = function() {
+  // Add the current month on load
   createMonth();
 };
 
@@ -85,7 +79,7 @@ function createMonth() {
     dateObject.setDate(dateObject.getDate() + 1);
   }
 
-
+  // Set the text to the correct month
   var currentMonthText = document.getElementById("current-month");
   currentMonthText.innerHTML = monthsAsString(date.getMonth()) + " " + date.getFullYear();
 
