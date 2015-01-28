@@ -3,7 +3,6 @@ var date = new Date();
 date.setDate(1);
 date.setMonth(0);
 
-
 window.onload = function() {
   // Add the current month on load
   createMonth();
@@ -19,20 +18,23 @@ function monthsAsString(monthIndex) {
 }
 
 // Creates a day element
-function createCalendarDay(num, day) {
+function createCalendarDay(num, day, mon) {
   var currentCalendar = document.getElementById("calendar");
 
   var newDay = document.createElement("div");
   var date = document.createElement("p");
-  date.innerHTML = num;
-
   var dayElement = document.createElement("p");
+
+  date.innerHTML = num;
   dayElement.innerHTML = day;
 
-  newDay.className = "calendar-day";
+  newDay.className = "calendar-day ";
+
+  // Set ID of element as date formatted "8-January" etc 
+  newDay.id = num+"-"+mon;
+
   newDay.appendChild(date);
   newDay.appendChild(dayElement);
-
   currentCalendar.appendChild(newDay);
 }
 
@@ -56,7 +58,6 @@ function nextMonth() {
 // Clears the calendar and shows the previous month
 function previousMonth() {
   clearCalendar();
-
   date.setMonth(date.getMonth() - 1);
   var val = date.getMonth();
   createMonth(date.getMonth());
@@ -71,11 +72,12 @@ function createMonth() {
   dateObject.setMonth(date.getMonth());
   dateObject.setYear(date.getFullYear());
 
-  createCalendarDay(dateObject.getDate(), dayOfWeekAsString(dateObject.getDay()));
+  createCalendarDay(dateObject.getDate(), dayOfWeekAsString(dateObject.getDay()), monthsAsString(dateObject.getMonth()));
+
   dateObject.setDate(dateObject.getDate() + 1);
 
   while (dateObject.getDate() != 1) {
-    createCalendarDay(dateObject.getDate(), dayOfWeekAsString(dateObject.getDay()));
+    createCalendarDay(dateObject.getDate(), dayOfWeekAsString(dateObject.getDay()), monthsAsString(dateObject.getMonth()));
     dateObject.setDate(dateObject.getDate() + 1);
   }
 
@@ -83,5 +85,19 @@ function createMonth() {
   var currentMonthText = document.getElementById("current-month");
   currentMonthText.innerHTML = monthsAsString(date.getMonth()) + " " + date.getFullYear();
 
+  getCurrentDay();
+}
 
+
+function getCurrentDay() {
+
+  // Create a new date that will set as default time
+  var todaysDate = new Date();
+  var today = todaysDate.getDate();
+  var currentMonth = todaysDate.getMonth();
+
+  var thisMonth = monthsAsString(currentMonth);
+  // Find element with the ID for today
+  currentDay = document.getElementById(today+"-"+thisMonth);
+  currentDay.className = "calendar-day today";
 }

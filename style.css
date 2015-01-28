@@ -4,7 +4,6 @@ body {
   color: #888888;
 }
 
-
 .calendar-day {
   width:8%;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
@@ -26,4 +25,9 @@ body {
 .controls {
   display: inline-block;
   text-align: center;
+}
+
+.today {
+  font-weight: bold;
+  color:red;
 }
