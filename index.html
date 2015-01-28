@@ -1,20 +1,26 @@
 <html>
-  <head>
+<head>
     <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" href="style.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  </head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1>A Pure HTML, CSS and JS Calandar</h1>
 
-  <body>
-    <div class="controls">
+    <div class="container">
+        <div class="controls">
+            <p class="next label" onclick="nextMonth()"><i class="fa fa-arrow-right"></i></p>
+            <p class="previous label" onclick="previousMonth()"><i class="fa fa-arrow-left"></i></p>
+            <p id="current-month" class="label bold">January</p>
+        </div>
 
-      <p onclick="previousMonth()" style="float: left;"> < </p>
-      <p id="current-month" style="float: left; padding-left:10px; padding-right:10px;">January</p>
-      <p onclick="nextMonth()" style="float: right;"> > </p>
+        <div class="calendar" id="calendar">
+        <!-- Calandar HTML output here -->
+        </div>
     </div>
 
-      <div class="calendar" id="calendar">
-      </div>
 
-  </body>
+    <a href="https://github.com/Deansy/html-calendar" class="github"><i class="fa fa-github"></i></a>
+</body>
+
 </html>
